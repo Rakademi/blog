@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+
+  {% include meta.html %}
+
+  <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}"
+    href="{{ site.baseurl }}/feed.xml" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+
+</head>
+
+<body class="w3-content" style="max-width:1800px;margin-bottom:100px">
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse w3-animate-left" style="z-index:3;width:300px;" id="mySidebar">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-large w3-padding w3-hover-grey"
+      title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <div class="w3-container" id="logo">
+      <h1>(R)akademi Blog</h1>
+    </div>
+    <hr>
+    <div class="w3-bar-block">
+      <a href="{{ site.baseurl }}/" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i
+          class="fa fa-th-large fa-home w3-margin-right"></i>Home</a>
+    </div>
+    <div class="w3-panel w3-large">
+      {% include svg-icons.html %}
+    </div>
+    <hr>
+    <div class="w3-container w3-white">
+      <h3>Tags</h3>
+      <div class="tags">
+        <p>
+          {% for item in site.data.tags_list.tags %}
+          <a href="{{ site.baseurl }}/{{ item.url }}" onclick="w3_close()"><span
+              class="w3-tag w3-light-grey w3-small w3-button w3-padding">{{ item.title }}</span></a>
+          {% endfor %}
+        </p>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay"></div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left: 300px;">
+    <!-- Header -->
+    <header id="home">
+      <a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/{{ site.avatar }}" style="width:65px;"
+          class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+      <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i
+          class="fa fa-bars"></i></span>
+      <div class="w3-container">
+      </div>
+    </header>
+    <div id="main" role="main" class="container">
+      <div class="w3-row">
+        <!-- Labels / tags -->
+
+        <div class="w3-container w3-margin-top">
+          {{ content }}
+        </div>
+        <!-- End page content -->
+
+        <script>
+          // Script to open and close sidebar
+          function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+          }
+
+          function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+          }
+        </script>
+
+        {% include analytics.html %}
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+---
+layout: default
+---
+
+<body class="w3-light-grey">
+  <div class="posts">
+    {% for post in site.posts %}
+    {% if post.tags contains "featured" %}
+    <article class="post featured">
+      <div class="w3-row">
+        <div class="w3-col l5 m5 s12">
+          <img src="{{ site.baseurl }}/images/{{ post.cover }}" alt="">
+        </div>
+        <div class="w3-col l7 m7 s12 post-overview">
+          <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+          <div class="date">
+            {{ post.author }} - {{ post.date | date: "%B %e, %Y" }}
+          </div>
+          <div class="entry excerpt">
+            {{ post.excerpt }}
+          </div>
+          <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+        </div>
+      </div>
+    </article>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  <h2>Artikel Terbaru</h2>
+  <div class="posts">
+    {% assign counter = '0' %}
+    {% for post in site.posts %}
+    {% if counter < '9' %} {% capture counter %}{{ counter | plus:'1' }}{% endcapture %} <article class="post">
+      <div class="w3-row">
+        <div class="w3-col l4 m4 s12">
+          <img src="{{ site.baseurl }}/images/{{ post.cover }}" alt="" class="cover">
+        </div>
+        <div class="w3-col l8 m8 s12 post-overview">
+          <h4><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
+          <div class="date">
+            {{ post.author }} - {{ post.date | date: "%B %e, %Y" }}
+          </div>
+          <div class="entry excerpt">
+            {{ post.excerpt }}
+          </div>
+          <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+        </div>
+      </div>
+      </article>
+      {% endif %}
+      {% endfor %}
+  </div>
+
+</body>
+
+</html>
