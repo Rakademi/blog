@@ -6,7 +6,7 @@ cover: cover/pca.png
 tags: [data_science]
 ---
 
-PCA adalah salah teknik yang paling populer untuk mengurangi dimensi independent variables. Kali ini kita akan cari tau cara implementasi PCA di Python dengan bantuan Scikit-Learn. 
+PCA adalah salah satu teknik yang paling populer untuk mengurangi dimensi independent variables. Kali ini kita akan cari tau cara implementasi PCA di Python dengan bantuan Scikit-Learn. 
 
 ## Masalah:
 Terlalu banyak independent variables atau features di dataset yang kita punya. Akurasi model jadi rendah karena [curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality).
